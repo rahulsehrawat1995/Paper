@@ -1,0 +1,52 @@
+
+package javaapplication2;
+
+import java.util.Scanner;
+
+public class ques4 {
+    public static void main(String args[]){
+        Scanner scan = new Scanner(System.in);
+        
+        char[] arr ={ '(',')', '{', '}', '[', ']' };
+        String str;
+        
+        System.out.println("Enter String : ");
+        str = scan.next();
+        int temp1 = 0; 
+        int temp2 = 0;
+        boolean a = false;
+        
+        for(int i=1;i<=6;i++){
+            for(int j=0;j<str.length();j++){
+                if(arr[i-1]==str.charAt(j)){
+                    temp1 = temp1+1;
+                }
+            }
+            if(i%2==0){
+                if(temp1==temp2){
+                  a=true;
+                  temp1=0;
+                  temp2=0;
+                }
+                else{
+                    a = false;
+                    temp1=0;
+                    temp2=0;
+                    break;
+                }
+            }
+            else{
+                temp2 = temp1;
+                temp1 = 0;
+            }
+        }
+        if(a==true){
+            System.out.println("Balanced...");
+        }
+        else{
+            System.out.println("Not Balanced...");
+
+        }
+        scan.close();
+    }
+}
